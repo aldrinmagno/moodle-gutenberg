@@ -1,0 +1,27 @@
+/**
+ * Moodle-specific styles for the Gutenberg editor.
+ *
+ * @package    editor_gutenberg
+ * @copyright  2026 Aldrin Magno
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Import the base editor styles.
+@import '../style.scss';
+
+// Moodle-specific container overrides.
+.gutenberg-editor-container {
+	min-height: 300px;
+	border: 1px solid #bbb;
+	border-radius: 4px;
+	background: #fff;
+
+	.block-editor-block-list__layout {
+		padding: 16px;
+	}
+
+	// Ensure the editor doesn't inherit Moodle's aggressive resets.
+	.editor-styles-wrapper {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	}
+}

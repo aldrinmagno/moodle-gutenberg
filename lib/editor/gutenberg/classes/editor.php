@@ -77,6 +77,10 @@ class editor extends \texteditor {
     /**
      * Add required JS and CSS for the editor to the page.
      *
+     * Loads the Gutenberg editor CSS and initializes the AMD module
+     * for the given textarea. Uses M.util.js_pending/js_complete
+     * for Behat test synchronization.
+     *
      * @param string $elementid The ID of the textarea element.
      * @param array|null $options Editor options.
      * @param array|null $fpoptions File picker options.
@@ -84,15 +88,20 @@ class editor extends \texteditor {
     public function use_editor($elementid, array $options = null, $fpoptions = null) {
         global $PAGE;
 
-        $jsoptions = json_encode([
+        // Load editor CSS.
+        $PAGE->requires->css('/lib/editor/gutenberg/amd/build/gutenberg-editor.css');
+
+        $config = json_encode([
             'elementId' => $elementid,
-            'options' => $options,
-            'fpoptions' => $fpoptions,
+            'options' => $options ?? new \stdClass(),
+            'fpoptions' => $fpoptions ?? new \stdClass(),
         ]);
 
         $PAGE->requires->js_amd_inline("
+            M.util.js_pending('editor_gutenberg/editor');
             require(['editor_gutenberg/editor'], function(GutenbergEditor) {
-                GutenbergEditor.init({$jsoptions});
+                GutenbergEditor.init({$config});
+                M.util.js_complete('editor_gutenberg/editor');
             });
         ");
     }
