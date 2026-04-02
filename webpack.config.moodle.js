@@ -31,6 +31,12 @@ const config = {
 	module: {
 		rules: [
 			{
+				// Mark block registration files as side-effectful so webpack
+				// doesn't tree-shake the registerBlockType() calls.
+				test: /src\/moodle\/blocks\/.+\/index\.js$/,
+				sideEffects: true,
+			},
+			{
 				test: /\.(js|mjs)$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',

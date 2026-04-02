@@ -20,6 +20,11 @@ import { createRoot } from '@wordpress/element';
 import IsolatedBlockEditor from '../index';
 import './style.scss';
 
+// Register custom Moodle blocks.
+// These must be imported after IsolatedBlockEditor so core blocks register first.
+import './blocks/callout-box';
+import './blocks/activity-link';
+
 /** @typedef {import('../index').BlockEditorSettings} BlockEditorSettings */
 
 /**
