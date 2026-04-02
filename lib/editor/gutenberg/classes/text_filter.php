@@ -44,7 +44,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  2026 Aldrin Magno
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class text_filter extends \core_filters\text_filter {
+class text_filter extends \moodle_text_filter {
 
     /**
      * Filter the text by removing Gutenberg block comment delimiters.
@@ -56,7 +56,7 @@ class text_filter extends \core_filters\text_filter {
      * @param array $options Filter options.
      * @return string The filtered text.
      */
-    public function filter($text, array $options = []): string {
+    public function filter($text, array $options = []) {
         // Quick check: skip if no block comments present.
         if (strpos($text, '<!-- wp:') === false) {
             return $text;

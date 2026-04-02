@@ -15,14 +15,36 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Gutenberg editor library functions.
+ * Privacy provider for editor_gutenberg.
  *
  * @package    editor_gutenberg
  * @copyright  2026 Aldrin Magno
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace editor_gutenberg\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-// Backward-compatible class alias.
-class_alias(\editor_gutenberg\editor::class, 'gutenberg_texteditor');
+/**
+ * Privacy provider indicating this plugin does not store personal data.
+ *
+ * The Gutenberg editor processes content in the browser and stores it
+ * in standard Moodle text fields. It does not maintain its own database
+ * tables or store any user-specific data.
+ *
+ * @package    editor_gutenberg
+ * @copyright  2026 Aldrin Magno
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the reason why this plugin stores no data.
+     *
+     * @return string The language string identifier.
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
+    }
+}

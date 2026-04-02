@@ -29,13 +29,11 @@ namespace editor_gutenberg\external;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once("$CFG->libdir/externallib.php");
-
-use external_api;
-use external_function_parameters;
-use external_value;
-use external_single_structure;
-use external_multiple_structure;
+use \core_external\external_api;
+use \core_external\external_function_parameters;
+use \core_external\external_value;
+use \core_external\external_single_structure;
+use \core_external\external_multiple_structure;
 
 /**
  * External function: get_course_activities.
@@ -64,8 +62,6 @@ class get_course_activities extends external_api {
      * @return array List of activity objects.
      */
     public static function execute(int $courseid): array {
-        global $DB;
-
         // Parameter validation.
         $params = self::validate_parameters(self::execute_parameters(), [
             'courseid' => $courseid,
@@ -110,7 +106,7 @@ class get_course_activities extends external_api {
      *
      * @return external_multiple_structure
      */
-    public static function execute_returns(): external_multiple_structure {
+    public static function execute_returns(): \core_external\external_multiple_structure {
         return new external_multiple_structure(
             new external_single_structure([
                 'cmid' => new external_value(PARAM_INT, 'Course module ID'),
