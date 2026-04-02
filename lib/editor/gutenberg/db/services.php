@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Gutenberg editor library functions.
+ * External functions and service definitions for editor_gutenberg.
  *
  * @package    editor_gutenberg
  * @copyright  2026 Aldrin Magno
@@ -24,5 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Backward-compatible class alias.
-class_alias(\editor_gutenberg\editor::class, 'gutenberg_texteditor');
+$functions = [
+    'editor_gutenberg_get_course_activities' => [
+        'classname'   => 'editor_gutenberg\external\get_course_activities',
+        'methodname'  => 'execute',
+        'description' => 'Get all visible activities in a course for the Activity Link block.',
+        'type'        => 'read',
+        'ajax'        => true,
+        'loginrequired' => true,
+    ],
+];

@@ -1,0 +1,71 @@
+/**
+ * Callout Box block styles.
+ *
+ * Designed to look good in Moodle's Boost theme and degrade gracefully
+ * in other themes. Uses Moodle-compatible Bootstrap alert colours.
+ *
+ * @package    editor_gutenberg
+ * @copyright  2026 Aldrin Magno
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+// Moodle/Bootstrap-compatible colour palette.
+$callout-colors: (
+	info:    ( bg: #d1ecf1, border: #bee5eb, text: #0c5460 ),
+	warning: ( bg: #fff3cd, border: #ffeeba, text: #856404 ),
+	success: ( bg: #d4edda, border: #c3e6cb, text: #155724 ),
+	danger:  ( bg: #f8d7da, border: #f5c6cb, text: #721c24 ),
+);
+
+.moodle-callout {
+	display: flex;
+	align-items: flex-start;
+	padding: 16px;
+	margin: 16px 0;
+	border: 1px solid #dee2e6;
+	border-left-width: 4px;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 1.5;
+
+	// Type variants.
+	@each $type, $colors in $callout-colors {
+		&--#{ $type } {
+			background-color: map-get( $colors, bg );
+			border-left-color: map-get( $colors, border );
+			color: map-get( $colors, text );
+
+			.moodle-callout__title {
+				color: map-get( $colors, text );
+			}
+		}
+	}
+
+	&__icon {
+		flex-shrink: 0;
+		margin-right: 12px;
+		font-size: 20px;
+		line-height: 1.4;
+	}
+
+	&__content {
+		flex: 1;
+		min-width: 0;
+	}
+
+	&__title {
+		font-weight: 600;
+		font-size: 15px;
+		margin-bottom: 4px;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	&__body {
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

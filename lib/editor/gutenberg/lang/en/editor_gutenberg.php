@@ -26,3 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Gutenberg';
 $string['privacy:metadata'] = 'The Gutenberg editor plugin does not store any personal data.';
+$string['calloutbox'] = 'Callout Box';
+$string['activitylink'] = 'Activity Link';
+$string['activitylink_desc'] = 'Link to a Moodle activity in the current course.';
