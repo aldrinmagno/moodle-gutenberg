@@ -25,3 +25,33 @@
 defined('MOODLE_INTERNAL') || die();
 
 class_alias(\editor_gutenberg\editor::class, 'gutenberg_texteditor');
+
+/**
+ * Serve plugin CSS files.
+ *
+ * Required for Moodle's pluginfile.php to serve the editor's CSS.
+ *
+ * @param stdClass $course Course object.
+ * @param stdClass $cm Course module object.
+ * @param context $context Context object.
+ * @param string $filearea File area.
+ * @param array $args File path arguments.
+ * @param bool $forcedownload Force download.
+ * @param array $options Additional options.
+ * @return bool False if file not found.
+ */
+function editor_gutenberg_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+    return false;
+}
+
+/**
+ * Get the content processor instance.
+ *
+ * Convenience function for other plugins that need to process
+ * Gutenberg content (e.g. for migration or bulk operations).
+ *
+ * @return \editor_gutenberg\content_processor
+ */
+function editor_gutenberg_get_content_processor(): \editor_gutenberg\content_processor {
+    return new \editor_gutenberg\content_processor();
+}

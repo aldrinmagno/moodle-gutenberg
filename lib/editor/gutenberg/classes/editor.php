@@ -39,6 +39,19 @@ defined('MOODLE_INTERNAL') || die();
 class editor extends \texteditor {
 
     /**
+     * Set up head content for the editor.
+     *
+     * Registers the Gutenberg text filter for content display
+     * and loads frontend CSS.
+     */
+    public function head_setup() {
+        global $PAGE;
+
+        // Ensure frontend styles are available for rendered block content.
+        $PAGE->requires->css('/lib/editor/gutenberg/styles.css');
+    }
+
+    /**
      * Is the current browser supported by this editor?
      *
      * @return bool

@@ -1,0 +1,243 @@
+/**
+ * Frontend styles for Gutenberg editor content.
+ *
+ * This file is auto-discovered by Moodle and loaded on every page.
+ * It ensures that custom Gutenberg blocks render correctly when
+ * viewed in Moodle's themes, without the editor JS loaded.
+ *
+ * @package    editor_gutenberg
+ * @copyright  2026 Aldrin Magno
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/* ==========================================================================
+   Callout Box (moodle/callout-box)
+   Uses Bootstrap-compatible colours for Moodle Boost theme.
+   ========================================================================== */
+
+.moodle-callout {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    margin: 16px 0;
+    border: 1px solid #dee2e6;
+    border-left-width: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Info variant */
+.moodle-callout--info {
+    background-color: #d1ecf1;
+    border-left-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Warning variant */
+.moodle-callout--warning {
+    background-color: #fff3cd;
+    border-left-color: #ffeeba;
+    color: #856404;
+}
+
+/* Success variant */
+.moodle-callout--success {
+    background-color: #d4edda;
+    border-left-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Danger variant */
+.moodle-callout--danger {
+    background-color: #f8d7da;
+    border-left-color: #f5c6cb;
+    color: #721c24;
+}
+
+.moodle-callout__icon {
+    flex-shrink: 0;
+    margin-right: 12px;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.moodle-callout__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.moodle-callout__title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.moodle-callout__title:empty {
+    display: none;
+}
+
+.moodle-callout__body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Title colour inherits from variant */
+.moodle-callout--info .moodle-callout__title { color: #0c5460; }
+.moodle-callout--warning .moodle-callout__title { color: #856404; }
+.moodle-callout--success .moodle-callout__title { color: #155724; }
+.moodle-callout--danger .moodle-callout__title { color: #721c24; }
+
+
+/* ==========================================================================
+   Activity Link (moodle/activity-link)
+   Card-style link to a Moodle activity.
+   ========================================================================== */
+
+.moodle-activity-link {
+    margin: 12px 0;
+}
+
+.moodle-activity-link__card {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    background: #f8f9fa;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.moodle-activity-link__card:hover {
+    border-color: #0f6cbf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: inherit;
+}
+
+.moodle-activity-link__icon {
+    flex-shrink: 0;
+    font-size: 28px;
+    line-height: 1;
+    margin-right: 14px;
+}
+
+.moodle-activity-link__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.moodle-activity-link__name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #1d2125;
+    line-height: 1.3;
+}
+
+.moodle-activity-link__type {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: capitalize;
+    margin-top: 2px;
+}
+
+.moodle-activity-link__description {
+    font-size: 13px;
+    color: #495057;
+    margin-top: 6px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   General Gutenberg content normalization
+   Ensures core Gutenberg blocks look reasonable in Moodle themes.
+   ========================================================================== */
+
+/* Gutenberg wraps blocks in wp-block- classes that need basic styling */
+[class*="wp-block-"] {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Separator block */
+.wp-block-separator {
+    border: none;
+    border-top: 2px solid #dee2e6;
+    margin: 2rem 0;
+}
+
+/* Quote block */
+.wp-block-quote {
+    border-left: 4px solid #0f6cbf;
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+    color: #495057;
+}
+
+/* Table block */
+.wp-block-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wp-block-table td,
+.wp-block-table th {
+    border: 1px solid #dee2e6;
+    padding: 8px 12px;
+}
+
+.wp-block-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Image block */
+.wp-block-image {
+    text-align: center;
+}
+
+.wp-block-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.wp-block-image figcaption {
+    font-size: 13px;
+    color: #6c757d;
+    margin-top: 8px;
+}
+
+/* Code block */
+.wp-block-code code {
+    display: block;
+    padding: 16px;
+    background: #f4f4f4;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+/* Columns block */
+.wp-block-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.wp-block-column {
+    flex: 1;
+    min-width: 0;
+}

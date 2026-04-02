@@ -20,6 +20,8 @@ import { createRoot } from '@wordpress/element';
 import IsolatedBlockEditor from '../index';
 import './style.scss';
 
+import { prepareForStorage, prepareForEditor } from './content-processor';
+
 // Register custom Moodle blocks.
 // These must be imported after IsolatedBlockEditor so core blocks register first.
 import './blocks/callout-box';
@@ -114,9 +116,9 @@ export function attachEditor( textarea, userSettings = {} ) {
 	root.render(
 		<IsolatedBlockEditor
 			settings={ mergedSettings }
-			onLoad={ ( parser, rawHandler ) => loadContent( textarea.value, parser, rawHandler ) }
+			onLoad={ ( parser, rawHandler ) => loadContent( prepareForEditor( textarea.value ), parser, rawHandler ) }
 			onSaveContent={ ( content ) => {
-				textarea.value = content;
+				textarea.value = prepareForStorage( content );
 			} }
 			onError={ () => {
 				// eslint-disable-next-line no-console
